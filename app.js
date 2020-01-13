@@ -8,6 +8,16 @@
     messagingSenderId: "36343720523",
     appId: "1:36343720523:web:a897faadd8762a260dbbce"
 }; firebase.initializeApp(firebaseConfig);
+firebase.auth().onAuthStateChanged(function (user) {
+    if (!user) {
+        alert("you have successfully logged out.")
+        window.location.href = 'index.html';
+        console.log('no authentication')
+    } else {
+        console.log('logged in');
+    }
+});
+
 
 var db = firebase.firestore();
 var i = 0;
