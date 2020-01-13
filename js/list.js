@@ -15,15 +15,15 @@ var storage = firebase.storage();
 var storageRef = storage.ref();
 
 
-firebase.auth().onAuthStateChanged(function (user) {
-    if (!user) {
-        alert("you have successfully logged out.")
-        window.location.href = 'index.html';
-        console.log('no authentication')
-    } else {
-        console.log('logged in');
-    }
-});
+// firebase.auth().onAuthStateChanged(function (user) {
+//     if (!user) {
+//         alert("you have successfully logged out.")
+//         window.location.href = 'index.html';
+//         console.log('no authentication')
+//     } else {
+//         console.log('logged in');
+//     }
+// });
 
 $('#search').on('click', function () {
     let name = $('#name').val();
