@@ -21,12 +21,13 @@
 
 var db = firebase.firestore();
 var i = 1;
+var j=1;
 
-// db.collection('alumini').get().then(snapshot => {
-//     snapshot.docs.forEach(doc => {
-//         i++;
-//     });document.getElementById("count").innerHTML="total count : "+i;
-// });
+db.collection('alumini').get().then(snapshot => {
+    snapshot.docs.forEach(doc => {
+        j++;
+    });document.getElementById("count").innerHTML="total count : "+j;
+});
 
                 
 function renderCafe(doc){
@@ -92,7 +93,7 @@ function renderCafe(doc){
 }
 
 // getting data
-db.collection('alumini').orderBy('name').get().then(snapshot => {
+db.collection('alumini').orderBy('batch').get().then(snapshot => {
     snapshot.docs.forEach(doc => {
         renderCafe(doc);
          
