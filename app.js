@@ -20,13 +20,13 @@
 
 
 var db = firebase.firestore();
-var i = 0;
+var i = 1;
 
-db.collection('alumini').get().then(snapshot => {
-    snapshot.docs.forEach(doc => {
-        i++;
-    });document.getElementById("count").innerHTML="total count : "+i;
-});
+// db.collection('alumini').get().then(snapshot => {
+//     snapshot.docs.forEach(doc => {
+//         i++;
+//     });document.getElementById("count").innerHTML="total count : "+i;
+// });
 
                 
 function renderCafe(doc){
@@ -62,8 +62,8 @@ function renderCafe(doc){
   
     
     var table = document.getElementById("table");
-    var row = table.insertRow(1);
-    var row2 = table.insertRow(2);
+    var row = table.insertRow(i);
+    
     var cell1 = row.insertCell(0);
     var cell2 =row.insertCell(1);
     var cell3 =row.insertCell(2);
@@ -88,12 +88,13 @@ function renderCafe(doc){
      cell10.innerHTML = higher.textContent;
   cell11.innerHTML = company.textContent;
     
- i=i-1;
+ i++
 }
 
 // getting data
-db.collection('alumini').get().then(snapshot => {
+db.collection('alumini').orderBy('name').get().then(snapshot => {
     snapshot.docs.forEach(doc => {
         renderCafe(doc);
+         
     });
 });
